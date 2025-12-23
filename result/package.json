@@ -1,0 +1,10 @@
+{
+  "name": "result",
+  "version": "1.0.0",
+  "description": "Voting results dashboard",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.0",
+    "pg": "^8.11.0"
+  }
+}
