@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: yanal22/voting-worker:latest
+        image: yanal2002/voting-worker:latest
         env:
         - name: REDIS_HOST
           valueFrom:

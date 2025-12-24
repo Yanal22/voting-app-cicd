@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: vote
-        image: yanal22/voting-vote:latest
+        image: yanal2002/voting-vote:latest
         ports:
         - containerPort: 80
           name: http
