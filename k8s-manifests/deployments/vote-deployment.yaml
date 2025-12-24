@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote
+  namespace: voting-app
+  labels:
+    app: voting-system
+    component: vote
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: voting-system
+      component: vote
+  template:
+    metadata:
+      labels:
+        app: voting-system
+        component: vote
+    spec:
+      containers:
+      - name: vote
+        image: yanal22/voting-vote:latest
+        ports:
+        - containerPort: 80
+          name: http
+        env:
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: REDIS_HOST
+        - name: OPTION_A
+          value: "Cats"
+        - name: OPTION_B
+          value: "Dogs"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 3
