@@ -31,9 +31,9 @@ spec:
               name: app-config
               key: REDIS_HOST
         - name: OPTION_A
-          value: "Cats"
+          value: "🐱 CATS"
         - name: OPTION_B
-          value: "Dogs"
+          value: "🐶 DOGS"
         resources:
           requests:
             memory: "64Mi"
