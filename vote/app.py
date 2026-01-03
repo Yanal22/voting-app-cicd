@@ -5,8 +5,8 @@ import random
 import json
 import redis
 
-option_a = os.getenv('OPTION_A', "🐱 CATS 😺")
-option_b = os.getenv('OPTION_B', "🐶 DOGS 🐕")
+option_a = os.getenv('OPTION_A', "🐟 FISH")
+option_b = os.getenv('OPTION_B', "🐦 BIRD")
 hostname = socket.gethostname()
 
 app = Flask(__name__)
