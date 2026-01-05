@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Voting Results - {{hostname}}</title>
+  <title>Voting Results</title>
   <base href="/index.html">
-  <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       box-sizing: border-box;
@@ -87,7 +87,7 @@
     
     <div class="vote-option">
       <div class="vote-label">
-        <span id="choice-a">{{optionA}}</span>
+        <span id="choice-a">🐟 FISH</span>
         <span class="vote-count" id="votes-a">0 votes</span>
       </div>
       <div class="progress-bar">
@@ -99,7 +99,7 @@
 
     <div class="vote-option">
       <div class="vote-label">
-        <span id="choice-b">{{optionB}}</span>
+        <span id="choice-b">🐦 BIRD</span>
         <span class="vote-count" id="votes-b">0 votes</span>
       </div>
       <div class="progress-bar">
@@ -109,14 +109,15 @@
       </div>
     </div>
 
-    <p style="text-align: center; color: #666; margin-top: 30px;">
-      Hostname: {{hostname}}
+    <p style="text-align: center; color: #666; margin-top: 30px;" id="hostname">
+      Hostname: Loading...
     </p>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io();
+    
     socket.on('message', function(msg) {
       var data = JSON.parse(msg);
       var a = parseInt(data.a || 0);
@@ -133,6 +134,10 @@
       document.getElementById('percent-a').textContent = percentA + '%';
       document.getElementById('percent-b').textContent = percentB + '%';
     });
+
+    // Set hostname
+    var hostname = window.location.hostname || 'Unknown';
+    document.getElementById('hostname').textContent = 'Hostname: ' + hostname;
   </script>
 </body>
 </html>
